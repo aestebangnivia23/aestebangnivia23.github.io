@@ -220,14 +220,14 @@ section,header{scroll-margin-top:64px}
 .rstats .views b{font-family:var(--display);font-weight:400;font-size:36px;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
 .rstats .views span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .rstats .ret{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.rstats .bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
-.rstats .bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--mint);transition:width 1.3s cubic-bezier(.2,.7,.2,1) .2s}
-.rstats.on .bar i{width:var(--r)}
+.rstats .rbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.rstats .rbar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--mint);transition:width 1.3s cubic-bezier(.2,.7,.2,1) .2s}
+.rstats.on .rbar i{width:var(--r)}
 .rstats .ret em{font-style:normal;color:var(--ink)}
 .vtot{display:flex;flex-wrap:wrap;gap:6px 28px;margin:14px 0 0;font-size:14px;color:var(--muted)}
 .vtot span{display:flex;align-items:baseline;gap:8px}
 .vtot b{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
-@media (prefers-reduced-motion: reduce){.rstats .bar i{transition:none}}
+@media (prefers-reduced-motion: reduce){.rstats .rbar i{transition:none}}
 
 .strip-wrap{position:relative}
 .strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:thin;cursor:grab;overscroll-behavior-x:contain}
@@ -278,6 +278,90 @@ section,header{scroll-margin-top:64px}
 @media (max-width:640px){.contact .row{grid-template-columns:1fr auto}.contact .row .lbl{grid-column:1/-1}}
 footer{padding-block:28px 48px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ampliar dashboards en celular */
+.touch-only{display:none}
+@media (hover:none){.touch-only{display:inline}.dash{cursor:zoom-in}}
+.zoom{position:fixed;inset:0;z-index:50;background:rgba(10,10,12,.95);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) 0 calc(env(safe-area-inset-bottom,0px) + 16px)}
+.zoom .ztop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 12px}
+.zoom .ztop p{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.zoom .zx{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font-size:18px;cursor:pointer}
+.zoom .zs{flex:1;overflow:auto;display:flex;align-items:center;overscroll-behavior:contain}
+.zoom .zs img{display:block;flex:none;width:min(240vw,1500px);max-width:none;height:auto;margin:0 16px}
+
+/* celular */
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding-block:64px}
+  .sec-head{margin-bottom:28px}
+  nav.top .wrap{min-height:54px;gap:12px}
+  nav.top ul{gap:14px;font-size:13.5px}
+  .hero{padding-block:26px 20px}
+  .hero-grid{gap:0}
+  .hero-grid>div:first-child{display:contents}
+  .avail{order:1;justify-self:start;font-size:11px;letter-spacing:.02em;padding:6px 11px;margin-bottom:20px}
+  .hero h1{order:2;font-size:clamp(42px,12.6vw,56px)}
+  .hero .intro{order:3;margin-top:16px;font-size:17px}
+  .stage{order:4;height:240px;margin-top:22px;border-radius:18px}
+  .stage .cap{left:14px;bottom:12px;font-size:10.5px}
+  .modes{order:5;margin-top:12px;flex-wrap:nowrap;gap:6px}
+  .modes button{flex:1 1 auto;justify-content:center;min-height:44px;padding:0 10px;font-size:14px}
+  .modes button span{display:none}
+  .mode-desc{order:6;margin-top:12px;min-height:3.2em;font-size:14.5px}
+  .cta{order:7;margin-top:16px}
+  .cta .btn{flex:1 1 0;justify-content:center;padding:0 14px}
+  .facts{margin-top:34px}
+  .facts div{padding-top:18px}
+  .facts b{font-size:40px}
+  .about{gap:28px}
+  .about p.big{font-size:28px}
+  .qbtns{padding:12px;gap:6px}
+  .qbtns button{font-size:12px;padding:7px 10px}
+  .term{min-height:0;padding:14px 14px 18px;font-size:13px}
+  .term table,.term tbody,.term tr,.term td{display:block;width:100%;min-width:0}
+  .term table{margin-top:12px}
+  .term thead{display:none}
+  .term tr{padding:9px 0;border-bottom:1px dashed var(--line)}
+  .term td{padding:0;border:0}
+  .term td:first-child{color:var(--ink);font-weight:500}
+  .term td+td{color:var(--muted);margin-top:2px}
+  .term .bignum{font-size:60px}
+  .proj{padding-block:40px;gap:22px}
+  .panel{padding:16px;border-radius:16px}
+  .gnum{flex-wrap:wrap;gap:6px 12px}
+  .gnum b{font-size:60px;white-space:nowrap}
+  .bar{grid-template-columns:96px 1fr 44px;gap:10px;font-size:13px}
+  .vhead{margin-bottom:18px}
+  .arrows{display:none}
+  .strip-wrap{margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)))}
+  .strip{gap:12px;padding-inline:max(20px,env(safe-area-inset-left,0px));scroll-padding-inline:max(20px,env(safe-area-inset-left,0px))}
+  .reel{flex-basis:62vw;max-width:250px}
+  .rstats .views b{font-size:32px}
+  .tl{padding-left:28px}
+  .tl article{padding-block:18px}
+  .tl article::before{left:-27px;top:24px}
+  .tl ul{font-size:15px}
+  .edu div{padding:18px}
+  .contact{padding-block:72px 56px}
+  .contact .rows{margin-top:28px}
+  .contact .row:hover{padding-left:0}
+  footer{padding-block:24px 40px}
+}
+@media (max-width:640px){
+  .panel .lbl{flex-wrap:wrap;row-gap:4px}
+  .panel .lbl span{min-width:0}
+  .panel .lbl .touch-only{color:var(--coral);white-space:nowrap}
+}
+@media (max-width:380px){
+  nav.top ul{gap:10px;font-size:13px}
+  nav.top .me{font-size:14px;gap:8px;white-space:nowrap}
+  .modes button{font-size:13px;padding:0 8px}
+  .bar{grid-template-columns:84px 1fr 40px}
+}
+@media (max-width:360px){
+  nav.top ul li:has(a[href="#videos"]){display:none}
+  .avail{border-radius:14px;font-size:10.5px}
+}
 
 /* entradas suaves: solo movimiento, el contenido siempre se ve */
 .js .rv{transform:translateY(22px);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
@@ -382,7 +466,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="links"><a href="https://youtu.be/2OCsXjd1UHg?t=240" target="_blank" rel="noopener">Ver la presentación</a><a href="https://github.com/nasae-nta/Google-Yelp" target="_blank" rel="noopener">Repositorio</a></div>
       </div>
       <div class="panel rv dashwrap">
-        <div class="lbl"><span>Mi dashboard en Power BI</span><span class="hover-only">Pasa el cursor para ampliar</span></div>
+        <div class="lbl"><span>Mi dashboard en Power BI</span><span class="hover-only">Pasa el cursor para ampliar</span><span class="touch-only">Toca para ampliar</span></div>
         <div class="tabs" role="group" aria-label="Página del dashboard">
           <button type="button" data-d="0" aria-pressed="true">Análisis general</button>
           <button type="button" data-d="1" aria-pressed="false">KPI</button>
@@ -404,7 +488,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="links"><a href="https://github.com/aestebangnivia23/SINIESTROS-VIALES-HENRY-" target="_blank" rel="noopener">Repositorio</a></div>
       </div>
       <div class="panel rv dashwrap sinw">
-        <div class="lbl"><span>Mi dashboard en Power BI</span><span class="hover-only">Pasa el cursor para ampliar</span></div>
+        <div class="lbl"><span>Mi dashboard en Power BI</span><span class="hover-only">Pasa el cursor para ampliar</span><span class="touch-only">Toca para ampliar</span></div>
         <div class="tabs" role="group" aria-label="Página del dashboard">
           <button type="button" data-d="0" aria-pressed="true">Gráficas</button>
           <button type="button" data-d="1" aria-pressed="false">KPI</button>
@@ -586,6 +670,7 @@ const N=260;let W=0,H=0,DPR=1,mode=0,auto=true,pts=[],mouse={x:-9999,y:-9999},ru
 const COL=()=>[css('--blue'),css('--coral'),css('--mint')];
 const DESC=['SQL, Python y Power BI: del dato crudo a un tablero que ayuda a decidir.','Guiones, edición y métricas de retención para marcas personales.','Embudos en ManyChat, CRM en Notion y un motor propio que edita Reels.'];
 const NAME=['Datos','Contenido','Automatización'];
+const CAPT=FINE?'Pasa el cursor por los puntos':'Toca los puntos para cambiar';
 function rnd(i){const x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x)}
 function shapeBars(){const hs=[.28,.42,.36,.55,.5,.72,.95,.82,.62],n=hs.length,bw=.07,gap=(.8-n*bw)/(n-1),out=[];const tot=hs.reduce((a,b)=>a+b,0);
   hs.forEach((h,i)=>{const c=Math.round(N*h/tot);const x0=.1+i*(bw+gap);for(let k=0;k<c;k++){out.push([x0+rnd(k*7+i)*bw,.88-rnd(k*3+i*11)*h*.72])}});return out}
@@ -613,13 +698,13 @@ function frame(){
 function drawStatic(){ctx.clearRect(0,0,W,H);ctx.fillStyle=col[mode];for(let i=0;i<N;i++){const t=target(i);pts[i].x=t[0];pts[i].y=t[1];ctx.globalAlpha=.55+.45*((i%5)/4);ctx.beginPath();ctx.arc(t[0],t[1],pts[i].r,0,6.2832);ctx.fill()}ctx.globalAlpha=1}
 function start(){if(RM){drawStatic();return}if(!running&&visible){running=true;requestAnimationFrame(frame)}}
 const mbtn=[...document.querySelectorAll('.modes button')],mdesc=document.getElementById('modeDesc'),mcap=document.getElementById('stageCap');
-function setMode(m){mode=m;mbtn.forEach((b,i)=>b.setAttribute('aria-pressed',i===m?'true':'false'));mdesc.textContent=DESC[m];mcap.innerHTML='Pasa el cursor por los puntos · <b>'+NAME[m]+'</b>';
+function setMode(m){mode=m;mbtn.forEach((b,i)=>b.setAttribute('aria-pressed',i===m?'true':'false'));mdesc.textContent=DESC[m];mcap.innerHTML=CAPT+' · <b>'+NAME[m]+'</b>';
   if(!RM){pts.forEach(p=>{p.vx+=(Math.random()-.5)*14;p.vy+=(Math.random()-.5)*14})}else drawStatic()}
 mbtn.forEach((b,i)=>b.addEventListener('click',()=>{auto=false;setMode(i)}));
 stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top},{passive:true});
 stage.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-9999});
 stage.addEventListener('click',()=>{auto=false;setMode((mode+1)%3)});
-size();init();
+size();init();mcap.innerHTML=CAPT+' · <b>'+NAME[mode]+'</b>';
 new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible)start();else running=false}).observe(stage);
 addEventListener('resize',()=>{size();if(RM)drawStatic()});
 if(!RM)setInterval(()=>{if(auto&&visible&&!document.hidden)setMode((mode+1)%3)},4200);
@@ -646,8 +731,17 @@ async function runQ(i){const tok=++qtok,d=Q[i];qb.forEach((b,j)=>b.setAttribute(
 qb.forEach((b,i)=>b.addEventListener('click',()=>runQ(i)));
 const tio=new IntersectionObserver(es=>{if(es[0].isIntersecting){tio.disconnect();if(qtok===0)runQ(0)}},{threshold:.5});tio.observe(term);
 
+/* ampliar dashboards en celular */
+function openZoom(img){const back=document.activeElement,o=document.createElement('div');o.className='zoom';o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');o.setAttribute('aria-label','Dashboard ampliado');
+  o.innerHTML='<div class="ztop"><p>Desliza para recorrer el dashboard</p><button type="button" class="zx" aria-label="Cerrar">✕</button></div><div class="zs"><img alt=""></div>';
+  const im=o.querySelector('img');im.src=img.getAttribute('src');im.alt=img.alt||'';
+  const close=()=>{o.remove();document.body.style.overflow='';document.removeEventListener('keydown',key);back&&back.focus&&back.focus()},key=e=>{if(e.key==='Escape')close()};
+  o.querySelector('.zx').addEventListener('click',close);o.addEventListener('click',e=>{if(e.target===o)close()});document.addEventListener('keydown',key);
+  document.body.appendChild(o);document.body.style.overflow='hidden';o.querySelector('.zx').focus()}
+
 /* dashboard con lupa */
 document.querySelectorAll('.dashwrap').forEach(w=>{const dash=w.querySelector('.dash'),dimgs=[...dash.querySelectorAll('img')],lens=dash.querySelector('.lens'),dtb=[...w.querySelectorAll('.tabs button')];let dcur=0;
+dash.addEventListener('click',()=>{if(!FINE)openZoom(dimgs[dcur])});
 dtb.forEach((b,i)=>b.addEventListener('click',()=>{dcur=i;dtb.forEach((x,j)=>x.setAttribute('aria-pressed',j===i?'true':'false'));dimgs.forEach((im,j)=>{im.hidden=j!==i})}));
 dash.addEventListener('pointermove',e=>{if(!FINE)return;const r=dash.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,Z=2.4;lens.style.left=(x-85)+'px';lens.style.top=(y-85)+'px';lens.style.backgroundImage='url("'+dimgs[dcur].getAttribute('src')+'")';lens.style.backgroundSize=(r.width*Z)+'px '+(r.height*Z)+'px';lens.style.backgroundPosition=(-(x*Z-85))+'px '+(-(y*Z-85))+'px'})});
 
