@@ -215,6 +215,20 @@ section,header{scroll-margin-top:64px}
 .site:hover .browser{border-color:var(--coral)}
 
 /* videos */
+.reel .rstats{display:flex;flex-direction:column;gap:10px;padding-top:12px;margin-top:2px;border-top:1px solid var(--line)}
+.rstats .views{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.rstats .views b{font-family:var(--display);font-weight:400;font-size:36px;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.rstats .views span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rstats .ret{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.rstats .bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.rstats .bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--mint);transition:width 1.3s cubic-bezier(.2,.7,.2,1) .2s}
+.rstats.on .bar i{width:var(--r)}
+.rstats .ret em{font-style:normal;color:var(--ink)}
+.vtot{display:flex;flex-wrap:wrap;gap:6px 28px;margin:14px 0 0;font-size:14px;color:var(--muted)}
+.vtot span{display:flex;align-items:baseline;gap:8px}
+.vtot b{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){.rstats .bar i{transition:none}}
+
 .strip-wrap{position:relative}
 .strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:thin;cursor:grab;overscroll-behavior-x:contain}
 .strip.drag{cursor:grabbing;scroll-snap-type:none}
@@ -477,17 +491,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section id="videos">
   <div class="wrap">
     <div class="vhead">
-      <div class="sec-head rv" style="margin-bottom:0"><p class="lbl"><b>03</b> Videos</p><h2>Videos que he <em>editado</em>.</h2><p class="muted">Arrastra para ver más. Cada uno abre en Instagram.</p></div>
+      <div class="sec-head rv" style="margin-bottom:0"><p class="lbl"><b>03</b> Videos</p><h2>Videos que he <em>editado</em>.</h2><p class="muted">Arrastra para ver más. Cada uno abre en Instagram.</p><p class="vtot"><span><b class="count" data-to="240" data-pre="+" data-suf=" mil">+240 mil</b>vistas entre estos 6 videos</span></p></div>
       <div class="arrows"><button type="button" id="prev" aria-label="Videos anteriores">←</button><button type="button" id="next" aria-label="Más videos">→</button></div>
     </div>
     <div class="strip-wrap">
       <div class="strip" id="strip">
-        <a class="reel" href="https://www.instagram.com/reel/DXsfHKhj2mY/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DXsfHKhj2mY.jpg" alt="Coach en el gimnasio presentando a un cliente" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Historia de un cliente</b><span class="who">Coach de entrenamiento</span></a>
-        <a class="reel" href="https://www.instagram.com/reel/DUEhnNXAd9t/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DUEhnNXAd9t.jpg" alt="Resultado físico de un cliente con texto animado" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Transformación</b><span class="who">Coach de entrenamiento</span></a>
-        <a class="reel" href="https://www.instagram.com/reel/DT_bxTvgZdS/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DT_bxTvgZdS.jpg" alt="Coach entrenando en el gimnasio" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Video de marca</b><span class="who">Coach de entrenamiento</span></a>
-        <a class="reel" href="https://www.instagram.com/reel/DbdwK6Rj9H3/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DbdwK6Rj9H3.jpg" alt="Creadora hablando a cámara en su cocina" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Hablando a cámara</b><span class="who">Creadora de finanzas</span></a>
-        <a class="reel" href="https://www.instagram.com/reel/DZk-IZCPlgG/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DZk-IZCPlgG.jpg" alt="Conversación sobre hábitos y mentalidad" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Formato conversación</b><span class="who">Creadora de finanzas</span></a>
-        <a class="reel" href="https://www.instagram.com/reel/DYpqCiRR16k/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DYpqCiRR16k.jpg" alt="Cómo el mundial de fútbol va a afectar el dólar" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Análisis con títulos animados</b><span class="who">Creadora de finanzas</span></a>
+        <a class="reel" href="https://www.instagram.com/reel/DXsfHKhj2mY/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DXsfHKhj2mY.jpg" alt="Coach en el gimnasio presentando a un cliente" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Historia de un cliente</b><span class="who">Esteban Albán<br>Coach de entrenamiento</span><div class="rstats"><p class="views"><b class="count" data-to="104" data-suf=" mil">104 mil</b><span>vistas</span></p></div></a>
+        <a class="reel" href="https://www.instagram.com/reel/DUEhnNXAd9t/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DUEhnNXAd9t.jpg" alt="Resultado físico de un cliente con texto animado" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Transformación</b><span class="who">Esteban Albán<br>Coach de entrenamiento</span><div class="rstats"><p class="views"><b class="count" data-to="125" data-suf=" mil">125 mil</b><span>vistas</span></p></div></a>
+        <a class="reel" href="https://www.instagram.com/reel/DT_bxTvgZdS/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DT_bxTvgZdS.jpg" alt="Coach entrenando en el gimnasio" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Video de marca</b><span class="who">Esteban Albán<br>Coach de entrenamiento</span><div class="rstats"><p class="views"><b class="count" data-to="5139">5.139</b><span>vistas</span></p></div></a>
+        <a class="reel" href="https://www.instagram.com/reel/DbdwK6Rj9H3/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DbdwK6Rj9H3.jpg" alt="Creadora hablando a cámara en su cocina" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Hablando a cámara</b><span class="who">Cata Castiblanco<br>Creadora de finanzas</span><div class="rstats"><p class="views"><b class="count" data-to="3020">3.020</b><span>vistas</span></p></div></a>
+        <a class="reel" href="https://www.instagram.com/reel/DZk-IZCPlgG/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DZk-IZCPlgG.jpg" alt="Conversación sobre hábitos y mentalidad" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Formato conversación</b><span class="who">Cata Castiblanco<br>Creadora de finanzas</span><div class="rstats"><p class="views"><b class="count" data-to="2720">2.720</b><span>vistas</span></p></div></a>
+        <a class="reel" href="https://www.instagram.com/reel/DYpqCiRR16k/" target="_blank" rel="noopener" draggable="false"><div class="cover"><img src="img/reel-DYpqCiRR16k.jpg" alt="Cómo el mundial de fútbol va a afectar el dólar" loading="lazy" draggable="false"><span class="play">Ver reel</span></div><b>Análisis con títulos animados</b><span class="who">Cata Castiblanco<br>Creadora de finanzas</span><div class="rstats"><p class="views"><b class="count" data-to="2908">2.908</b><span>vistas</span></p></div></a>
       </div>
     </div>
   </div>
@@ -557,10 +571,14 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 /* contadores */
-const fmt=n=>String(n);
+const fmt=n=>n.toLocaleString('es-CO');
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);if(RM)return;const el=e.target,to=+el.dataset.to,pre=el.dataset.pre||'',suf=el.dataset.suf||'',t0=performance.now(),D=1300;
   (function f(t){const k=Math.min(1,(t-t0)/D),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=pre+fmt(v)+suf;if(k<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});
 document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+/* estadísticas de los reels */
+document.querySelectorAll('.rstats').forEach(el=>{if(RM){el.classList.add('on');return}
+  new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){el.classList.add('on');o.disconnect()}},{threshold:.6}).observe(el)});
+
 
 /* escenario de puntos */
 const stage=document.getElementById('stage'),cv=document.getElementById('field'),ctx=cv.getContext('2d');
